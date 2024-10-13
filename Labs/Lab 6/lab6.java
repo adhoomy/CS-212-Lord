@@ -1,5 +1,3 @@
-package lab6;
-
 import javax.swing.JOptionPane;
 
 public class lab6 {
