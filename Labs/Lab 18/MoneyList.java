@@ -1,5 +1,5 @@
-// MoneyList.java
-// 
+// LinkedList.java
+//
 // This version uses three instance variables,
 // a pointer to the first node, a pointer to
 // the last node, and length, to make our
@@ -44,7 +44,10 @@ public class MoneyList {
 	 */
 	public void append(String d) {
 		// TODO Code here for append
-
+		MoneyNode newNode = new MoneyNode(d);
+		last.next = newNode;
+		last = newNode;
+		length++;
 	} // method append(String)
 
 	/**
@@ -56,7 +59,11 @@ public class MoneyList {
 	 */
 	public void prepend(String d) {
 		// TODO Code here for prepend
-
+		MoneyNode newNode = new MoneyNode(d);
+		newNode.next = first.next;
+		first.next = newNode;
+		if (last == first) last = newNode;
+		length++;
 	} // method append(String)
 
 	/**
@@ -107,5 +114,5 @@ public class MoneyList {
 		return true;
 	} // method equals
 
-} // class MoneyList
+} // class LinkedList
 

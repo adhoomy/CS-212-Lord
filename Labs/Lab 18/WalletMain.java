@@ -11,7 +11,7 @@ public class WalletMain {
          if (dataItem == 'B') {
             int billValue= Integer.parseInt(dataSource[i].substring(1,dataSource[i].length()));
             myWallet.addToWallet(new Bill(billValue));
-         }   
+         }
          else
             if (dataItem == 'Q')
                myWallet.addToWallet(new Quarter());
@@ -25,10 +25,10 @@ public class WalletMain {
             if (dataItem == 'P')
                myWallet.addToWallet(new Penny());
          }
-
-	   myWallet.print();
-	   System.out.println("My wallet contains: $"+myWallet.getValue());
+      
+	  myWallet.print();
+	  System.out.println("My wallet contains: $"+myWallet.getValue());
    }
-
+   
    }
 }

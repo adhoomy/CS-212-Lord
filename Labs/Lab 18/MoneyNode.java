@@ -1,4 +1,4 @@
-// MoneyNode.java
+// ListNode.java
 
 public class MoneyNode
 {
@@ -11,3 +11,4 @@ public class MoneyNode
       next = null;
    }  // constructor
 }  // class ShortNode
+
