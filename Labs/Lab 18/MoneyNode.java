@@ -2,10 +2,10 @@
 
 public class MoneyNode
 {
-   public String data;
+   public int data;
    public MoneyNode next;
 
-   public MoneyNode(String d)
+   public MoneyNode(int d)
    {
       data = d;
       next = null;
