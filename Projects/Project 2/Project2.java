@@ -16,7 +16,7 @@ public class Project2 {
             StringTokenizer tokens = new StringTokenizer(line, ",");
             if (tokens.hasMoreTokens()) {
                 String serialNum = tokens.nextToken().trim();
-                String type = serialNum.substring(0, 1);  // Type based on the first character
+                String type = serialNum.substring(0, 1);  // type of appliance based on the first character
 
                 int price;
                 Appliance appliance = null;
@@ -37,13 +37,14 @@ public class Project2 {
                 }
 
                 if (appliance != null) {
-                    sortedList.add(appliance);  // Add appliance to the sorted list
+                    sortedList.add(appliance);  // Add appliance to the sorted list depending on first character
                 }
             }
             line = in.readLine();
         }
         in.close();
 
+        // goes through sorted linked list and adds it to the gui
         ApplianceNode current = sortedList.first.next;
         while(current != null) {
             String sNum = current.data.serialNumber.substring(0, 1);;
