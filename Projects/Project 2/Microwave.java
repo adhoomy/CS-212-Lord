@@ -9,6 +9,6 @@ public class Microwave extends Appliance {
     }
 
     public String toString() {
-        return "Serial #" + serialNumber + ", Price: " + price + ", Watts: " + watts;
+        return "Serial #: " + serialNumber + ", Price: " + price + ", Watts: " + watts;
     }
 }

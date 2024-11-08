@@ -3,11 +3,6 @@ public abstract class Appliance {
     // where the serial number is stored
     protected String serialNumber;
 
-    // initialize appliance with a serial number
-//    public Appliance(String serialNum) {
-//        serialNumber = serialNum;
-//    }
-
     // gets the serial number
     public String getSerialNumber() {
         return serialNumber;
@@ -28,16 +23,4 @@ public abstract class Appliance {
         return this.serialNumber.equals(other.serialNumber);
     }
 
-    // defines the appliance
-//    public String toString() {
-//        String appliance = "";
-//        char letter = serialNumber.charAt(0);
-//
-//        if(letter == 'R') appliance = "refrigerator";
-//        else if(letter == 'D') appliance = "dishwasher";
-//        else if(letter == 'M') appliance = "microwave";
-//        else appliance = "unknown";
-//
-//        return appliance;
-//    }
 }

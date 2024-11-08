@@ -1,30 +1,25 @@
-// LinkedList.java
-//
-// This version uses three instance variables,
-// a pointer to the first node, a pointer to
-// the last node, and length, to make our
-// append and getLength methods more efficient
-// than the would be if our only instance
-// variable were a pointer to the first node.
-//
-// This version uses a dummy first node.  Hence
-// it needs less decision-making than it would
-// need if a dummy first node were not used.
-//
+import java.util.Objects;
 
 /**
  * Encapsulates a linked list of <code>String</code>.
  */
-public class MoneyList {
+public abstract class ApplianceList {
 
 	/** First node in linked list - dummy node */
-	private MoneyNode first = new MoneyNode(null);
+	protected ApplianceNode first;
 
 	/** Last node in linked list */
-	private MoneyNode last = first;
+	protected ApplianceNode last;
 
 	/** Number of data items in the list. */
-	private int length = 0;
+	protected int length;
+
+	public ApplianceList() {
+		ApplianceNode n = new ApplianceNode(null);
+		first = n;
+		last = n;
+		length = 0;
+	}
 
 	/**
 	 * Gets the number of data values currently stored in this LinkedList.
@@ -39,12 +34,12 @@ public class MoneyList {
 	/**
 	 * Appends a String data element to this LinkedList.
 	 * 
-	 * @param data
+	 * @param /data
 	 *            the data element to be appended.
 	 */
-	public void append(int d) {
+	public void append(Appliance d) {
 		// TODO Code here for append
-		MoneyNode newNode = new MoneyNode(d);
+		ApplianceNode newNode = new ApplianceNode(d);
 		last.next = newNode;
 		last = newNode;
 		length++;
@@ -54,12 +49,12 @@ public class MoneyList {
 	 * Prepends (adds to the beginning) a String data element to this
 	 * LinkedList.
 	 * 
-	 * @param data
+	 * @param /data
 	 *            the data element to be prepended.
 	 */
-	public void prepend(int d) {
+	public void prepend(Appliance d) {
 		// TODO Code here for prepend
-		MoneyNode newNode = new MoneyNode(d);
+		ApplianceNode newNode = new ApplianceNode(d);
 		newNode.next = first.next;
 		first.next = newNode;
 		if (last == first) last = newNode;
@@ -71,7 +66,7 @@ public class MoneyList {
 	 *         space character
 	 */
 	public String toString() {
-		MoneyNode p = first.next;
+		ApplianceNode p = first.next;
 		String returnString = "";
 		while (p != null) {
 			returnString += p.data + " ";
@@ -95,16 +90,16 @@ public class MoneyList {
 	 */
 	public boolean equals(Object other) {
 		if (other == null || getClass() != other.getClass()
-				|| length != ((MoneyList) other).length)
+				|| length != ((ApplianceList) other).length)
 			return false;
 
-		MoneyNode nodeThis = first;
-		MoneyNode nodeOther = ((MoneyList) other).first;
+		ApplianceNode nodeThis = first;
+		ApplianceNode nodeOther = ((ApplianceList) other).first;
 		while (nodeThis != null) {
 			// Since the two linked lists are the same length,
 			// they should reach null on the same iteration.
 
-			if (nodeThis.data != nodeOther.data)
+			if (!Objects.equals(nodeThis.data, nodeOther.data))
 				return false;
 
 			nodeThis = nodeThis.next;

@@ -9,6 +9,6 @@ public class Refrigerator extends Appliance {
     }
 
     public String toString() {
-        return "Serial #" + serialNumber + ", Price: " + price + ", Cubic Feet: " + cubicFeet;
+        return "Serial #: " + serialNumber + ", Price: " + price + ", Cubic Feet: " + cubicFeet;
     }
 }
