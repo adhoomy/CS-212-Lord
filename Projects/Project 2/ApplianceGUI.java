@@ -4,31 +4,31 @@ import java.util.StringTokenizer;
 
 public class ApplianceGUI extends JFrame{
 
-        // creates the constructor for the gui
-        public ApplianceGUI() {
-            setTitle("Appliances");
-            setSize(1200, 400);
-            setLocation(500, 500);
-            setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        }
+    // creates the constructor for the gui
+    public ApplianceGUI() {
+        setTitle("Appliances");
+        setSize(1200, 400);
+        setLocation(500, 500);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }
 
-        // creates the content pane and text areas where the organized sorted serial numbers will be displayed
-        public void printSerialGUI(ApplianceGUI appGUI) {
-            Container myContentPane = appGUI.getContentPane();
-            TextArea refrigerators = new TextArea();
-            TextArea dishwashers = new TextArea();
-            TextArea microwaves = new TextArea();
-            appGUI.setLayout(new GridLayout(1, 3));
+    // creates the content pane and text areas where the organized sorted serial numbers will be displayed
+    public void printSerialGUI(ApplianceGUI appGUI) {
+        Container myContentPane = appGUI.getContentPane();
+        TextArea refrigerators = new TextArea();
+        TextArea dishwashers = new TextArea();
+        TextArea microwaves = new TextArea();
+        appGUI.setLayout(new GridLayout(1, 3));
 
-            // calls method to create the appliance objects with the serial numbers and add them to the text areas
-            readSerialDoc(refrigerators, dishwashers, microwaves);
+        // calls method to create the appliance objects with the serial numbers and add them to the text areas
+        readSerialDoc(refrigerators, dishwashers, microwaves);
 
-            // adds the content pane and text areas to the jframe and makes it visible
-            myContentPane.add(refrigerators);
-            myContentPane.add(dishwashers);
-            myContentPane.add(microwaves);
-            appGUI.setVisible(true);
-        }
+        // adds the content pane and text areas to the jframe and makes it visible
+        myContentPane.add(refrigerators);
+        myContentPane.add(dishwashers);
+        myContentPane.add(microwaves);
+        appGUI.setVisible(true);
+    }
 
     public void readSerialDoc(TextArea fridges, TextArea washers, TextArea waves) {
 
