@@ -5,7 +5,11 @@ public class ApplianceNode
    protected Appliance data;
    protected ApplianceNode next;
 
-   // sets data and what the next node is for the appliance
+   /**
+    * sets data and what the next node is for the appliance
+    *
+    * @param d
+    */
    public ApplianceNode(Appliance d)
    {
       data = d;

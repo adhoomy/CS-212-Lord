@@ -1,9 +1,17 @@
 public class SortedApplianceList extends ApplianceList {
 
+    /**
+     * sorts the list of appliances
+     */
     public SortedApplianceList() {
         super();
     }
 
+    /**
+     * adds appliance serial number into a sorted list
+     *
+     * @param appliance
+     */
     public void add(Appliance appliance) {
         ApplianceNode newNode = new ApplianceNode(appliance);
 
@@ -25,6 +33,9 @@ public class SortedApplianceList extends ApplianceList {
         length++;
     }
 
+    /**
+     * prints the list
+     */
     public void printList() {
         ApplianceNode current = first.next;
         while(current.next!=null) {

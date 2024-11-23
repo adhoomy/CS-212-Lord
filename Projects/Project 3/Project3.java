@@ -1,4 +1,4 @@
-public class Project2 {
+public class Project3 {
 
     /**
      * runs the program, a gui that lists organized serial numbers for appliances

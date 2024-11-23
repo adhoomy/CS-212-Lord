@@ -14,6 +14,9 @@ public abstract class ApplianceList {
 	/** Number of data items in the list. */
 	protected int length;
 
+	/**
+	 * creates a new appliance for the linked list
+	 */
 	public ApplianceList() {
 		ApplianceNode n = new ApplianceNode(null);
 		first = n;

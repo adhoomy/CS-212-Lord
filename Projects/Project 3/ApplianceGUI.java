@@ -2,14 +2,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.StringTokenizer;
 
+/**
+ * The main GUI for displaying appliance information.
+ */
 public class ApplianceGUI extends JFrame {
 
     private TextArea refrigerators;
     private TextArea dishwashers;
     private TextArea microwaves;
+    private FileMenuHandler fileMenuHandler;
 
     /**
      * Constructor for the GUI
@@ -19,6 +22,9 @@ public class ApplianceGUI extends JFrame {
         setSize(1500, 400);
         setLocation(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        fileMenuHandler = new FileMenuHandler(this);
+
         initializeMenu();
         initializeContentPane();
     }
@@ -34,7 +40,7 @@ public class ApplianceGUI extends JFrame {
         JMenuItem openItem = new JMenuItem("Open");
         openItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                openFile();
+                fileMenuHandler.openFile();
             }
         });
 
@@ -58,7 +64,7 @@ public class ApplianceGUI extends JFrame {
     /**
      * Initialize content panes and text areas
      */
-    private void initializeContentPane() {
+    public void initializeContentPane() {
         Container myContentPane = getContentPane();
         myContentPane.removeAll(); // Clear existing content
         refrigerators = new TextArea();
@@ -73,22 +79,9 @@ public class ApplianceGUI extends JFrame {
     }
 
     /**
-     * Method to handle file opening
-     */
-    private void openFile() {
-        JFileChooser fileChooser = new JFileChooser();
-        int status = fileChooser.showOpenDialog(this);
-
-        if (status == JFileChooser.APPROVE_OPTION) {
-            File selectedFile = fileChooser.getSelectedFile();
-            readSerialDoc(selectedFile.getAbsolutePath());
-        }
-    }
-
-    /**
      * Reads the serial document and updates the GUI
      *
-     * @param filePath
+     * @param filePath the path of the file to be read
      */
     public void readSerialDoc(String filePath) {
         initializeContentPane(); // Clear and reset content for the new file
@@ -98,11 +91,10 @@ public class ApplianceGUI extends JFrame {
         TextFileInput in = new TextFileInput(filePath);
         String line = in.readLine();
         while (line != null) {
-            String serialNum = null;
             try {
                 StringTokenizer tokens = new StringTokenizer(line, ",");
                 if (tokens.hasMoreTokens()) {
-                    serialNum = tokens.nextToken().trim();
+                    String serialNum = tokens.nextToken().trim();
                     String type = serialNum.substring(0, 1); // type of appliance based on the first character
 
                     if (!isValid(serialNum)) {
@@ -159,7 +151,7 @@ public class ApplianceGUI extends JFrame {
     /**
      * Print the serial GUI
      *
-     * @param appGUI
+     * @param appGUI the instance of ApplianceGUI to be used
      */
     public void printSerialGUI(ApplianceGUI appGUI) {
         appGUI.initializeContentPane();
@@ -169,8 +161,8 @@ public class ApplianceGUI extends JFrame {
     /**
      * Validates the serial number
      *
-     * @param psn
-     * @return
+     * @param psn the serial number to validate
+     * @return true if the serial number is valid, false otherwise
      */
     public boolean isValid(String psn) {
         if (psn.length() != 12) {
@@ -190,5 +182,32 @@ public class ApplianceGUI extends JFrame {
         }
 
         return true;
+    }
+
+    /**
+     * Getter for refrigerators text area
+     *
+     * @return the TextArea for refrigerators
+     */
+    public TextArea getRefrigerators() {
+        return refrigerators;
+    }
+
+    /**
+     * Getter for dishwashers text area
+     *
+     * @return the TextArea for dishwashers
+     */
+    public TextArea getDishwashers() {
+        return dishwashers;
+    }
+
+    /**
+     * Getter for microwaves text area
+     *
+     * @return the TextArea for microwaves
+     */
+    public TextArea getMicrowaves() {
+        return microwaves;
     }
 }
