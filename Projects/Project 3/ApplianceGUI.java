@@ -11,7 +11,9 @@ public class ApplianceGUI extends JFrame {
     private TextArea dishwashers;
     private TextArea microwaves;
 
-    // Constructor for the GUI
+    /**
+     * Constructor for the GUI
+     */
     public ApplianceGUI() {
         setTitle("Appliances");
         setSize(1500, 400);
@@ -21,7 +23,9 @@ public class ApplianceGUI extends JFrame {
         initializeContentPane();
     }
 
-    // Initialize the File menu
+    /**
+     * Initialize the File menu
+     */
     private void initializeMenu() {
         JMenuBar menuBar = new JMenuBar();
         JMenu fileMenu = new JMenu("File");
@@ -51,7 +55,9 @@ public class ApplianceGUI extends JFrame {
         setJMenuBar(menuBar);
     }
 
-    // Initialize content panes and text areas
+    /**
+     * Initialize content panes and text areas
+     */
     private void initializeContentPane() {
         Container myContentPane = getContentPane();
         myContentPane.removeAll(); // Clear existing content
@@ -66,7 +72,9 @@ public class ApplianceGUI extends JFrame {
         validate(); // Refresh the content pane
     }
 
-    // Method to handle file opening
+    /**
+     * Method to handle file opening
+     */
     private void openFile() {
         JFileChooser fileChooser = new JFileChooser();
         int status = fileChooser.showOpenDialog(this);
@@ -77,7 +85,11 @@ public class ApplianceGUI extends JFrame {
         }
     }
 
-    // Reads the serial document and updates the GUI
+    /**
+     * Reads the serial document and updates the GUI
+     *
+     * @param filePath
+     */
     public void readSerialDoc(String filePath) {
         initializeContentPane(); // Clear and reset content for the new file
 
@@ -144,13 +156,22 @@ public class ApplianceGUI extends JFrame {
         setVisible(true);
     }
 
-    // Print the serial GUI
+    /**
+     * Print the serial GUI
+     *
+     * @param appGUI
+     */
     public void printSerialGUI(ApplianceGUI appGUI) {
         appGUI.initializeContentPane();
         appGUI.readSerialDoc("p3input.txt");
     }
 
-    // Validates the serial number
+    /**
+     * Validates the serial number
+     *
+     * @param psn
+     * @return
+     */
     public boolean isValid(String psn) {
         if (psn.length() != 12) {
             return false;
